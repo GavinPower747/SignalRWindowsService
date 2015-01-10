@@ -1,0 +1,1 @@
+C:\TFSSource\SignalRWindowsService\bin\Debug\SignalRWindowsService.exe.config

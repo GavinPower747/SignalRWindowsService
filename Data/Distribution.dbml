@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BillApp" Class="DistributionDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=37.187.35.32;Initial Catalog=BillApp;Persist Security Info=True;User ID=GUser" SettingsObjectName="SignalRWindowsService.Properties.Settings" SettingsPropertyName="BillAppConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BillData" Member="BillDBs">
+    <Type Name="BillDB" Id="ID1">
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DueDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.GetAllBills" Method="GetAllBills">
+    <ElementType IdRef="ID1" />
+  </Function>
+</Database>
