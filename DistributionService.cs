@@ -57,6 +57,14 @@ namespace SignalRWindowsService
             Clients.Caller.displayBills(Bills);
         }
 
+        /*--------------------------------------------------TwangR Functions--------------------------------------------------*/
+
+        public void Send(string name, string messsage)
+        {
+            Clients.All.addMessage(name, messsage);
+        }
+
+        /*--------------------------------------------------------------------------------------------------------------------*/
         public void TestConnection()
         {
             Clients.Caller.ConnectionSuccessful();
