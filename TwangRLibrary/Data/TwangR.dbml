@@ -10,7 +10,7 @@
     </Type>
   </Table>
   <Table Name="dbo.TwangR_user_logindata" Member="LoginDBs">
-    <Type Name="LoginDB">
+    <Type Name="LoginDB" Id="ID1">
       <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="PasswordHash" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
@@ -19,4 +19,9 @@
       <Column Name="UserNickName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
+  <Function Name="dbo.TwangR_user_login" Method="TwangR_user_login">
+    <Parameter Name="username" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType IdRef="ID1" />
+  </Function>
 </Database>

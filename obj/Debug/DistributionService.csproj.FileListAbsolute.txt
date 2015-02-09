@@ -52,3 +52,5 @@ C:\dev\SignalRWindowsService\obj\Debug\SignalRWindowsService.application
 C:\dev\SignalRWindowsService\bin\Debug\Newtonsoft.Json.dll
 C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.dll
 C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.pdb
+C:\TFSSource\SignalRWindowsService\bin\Debug\TwangRLibrary.dll
+C:\TFSSource\SignalRWindowsService\bin\Debug\TwangRLibrary.pdb

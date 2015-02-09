@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D85216FD-904C-4F92-8DED-DA27CBD159A3}</ProjectGuid>
-    <ProjectGuid>{1D966F38-6520-4C17-96C8-BB581B313DCE}</ProjectGuid>
+    <ProjectGuid>{D85216FD-904C-4F92-8DED-DA27CBD159A3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TwangRLibrary</RootNamespace>
@@ -42,11 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="Model\" />
+    <Compile Include="BadLoginException.cs" />
     <Compile Include="Data\ITwangRRepo.cs" />
     <Compile Include="Data\TwangR.designer.cs">
       <AutoGen>True</AutoGen>
@@ -57,7 +53,6 @@
     <Compile Include="Model\Chat.cs" />
     <Compile Include="Model\Message.cs" />
     <Compile Include="Model\UserData.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>

@@ -8,7 +8,7 @@
         <elementListCompartment Id="dc1b8b9d-cbcb-49ee-8aa2-1e6b76870bb0" absoluteBounds="0.51499999999999968, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8ccb2d08-9e86-4c48-a99b-919bf70ec0e3" isExpanded="false" absoluteBounds="0.5, 0.5, 2, 0.45">
+    <classShape Id="8ccb2d08-9e86-4c48-a99b-919bf70ec0e3" absoluteBounds="0.5, 0.5, 2, 1.9631982421875">
       <DataClassMoniker Name="/TwangRDataContext/LoginDB" />
       <nestedChildShapes>
         <elementListCompartment Id="1f7ac2c1-c6f7-4c32-b683-71426f3a9b2f" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
