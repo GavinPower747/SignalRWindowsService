@@ -26,9 +26,16 @@ namespace TwangRLibrary.Model
             this.repo = repo;
         }
 
-        public UserData Login(string username, string password)
+        public dynamic Login(string username, string password)
         {
-            return repo.Login(username, password);
+            try
+            {
+                return repo.Login(username, password);
+            }
+            catch(BadLoginException BLE)
+            {
+
+            }
         }
     }
 }

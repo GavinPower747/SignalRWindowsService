@@ -8,6 +8,7 @@ using SignalRWindowsService.Model;
 using System.Collections.Concurrent;
 using System;
 using TwangRLibrary.Model;
+using System.Dynamic;
 
 [assembly: OwinStartup(typeof(SignalRWindowsService.Startup))]
 namespace SignalRWindowsService
@@ -73,6 +74,13 @@ namespace SignalRWindowsService
             message.isSelf = isSelf;
             Clients.All.addMessage(MessageID, messageUp, sender, isSelf);
             Clients.Caller.messageRecieved(MessageID, messageUp, sender, isSelf);
+        }
+
+        public void Login(string Username, string Password)
+        {
+            dynamic user = new ExpandoObject();
+            user = user.Login(Username, Password);
+            Clients.Caller.loginResult();
         }
 
         /*--------------------------------------------------------------------------------------------------------------------*/

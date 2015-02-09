@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D85216FD-904C-4F92-8DED-DA27CBD159A3}</ProjectGuid>
-    <ProjectGuid>{D85216FD-904C-4F92-8DED-DA27CBD159A3}</ProjectGuid>
+    <ProjectGuid>{1D966F38-6520-4C17-96C8-BB581B313DCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TwangRLibrary</RootNamespace>

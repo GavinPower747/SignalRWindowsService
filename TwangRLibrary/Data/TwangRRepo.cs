@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +14,14 @@ namespace TwangRLibrary.Data
 
         public void LogMessage(Message message) { }
 
-        public UserData Login(string username, string password)
+        public dynamic Login(string username, string password)
         {
+            dynamic user = new ExpandoObject();
             List<UserData> users = LoginDbToUserData(_dataContext.TwangR_user_login(username, password));
 
             if(users.Count == 0)
             {
-                throw new BadLoginException("Implement me");
+                throw new BadLoginException("User not found");
             }
 
             return users[0];
