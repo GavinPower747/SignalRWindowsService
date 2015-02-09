@@ -1,0 +1,6 @@
+C:\dev\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.csprojResolveAssemblyReference.cache
+C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.dll.config
+C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.dll
+C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.pdb
+C:\dev\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.dll
+C:\dev\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.pdb

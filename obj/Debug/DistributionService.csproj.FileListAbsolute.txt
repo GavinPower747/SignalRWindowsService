@@ -43,10 +43,12 @@ C:\dev\SignalRWindowsService\bin\Debug\Microsoft.Owin.Diagnostics.xml
 C:\dev\SignalRWindowsService\bin\Debug\Microsoft.Owin.Host.HttpListener.xml
 C:\dev\SignalRWindowsService\bin\Debug\Microsoft.Owin.Hosting.xml
 C:\dev\SignalRWindowsService\bin\Debug\Microsoft.Owin.Security.xml
-C:\dev\SignalRWindowsService\bin\Debug\Newtonsoft.Json.xml
 C:\dev\SignalRWindowsService\obj\Debug\DistributionService.csprojResolveAssemblyReference.cache
 C:\dev\SignalRWindowsService\obj\Debug\SignalRWindowsService.ProjectInstaller.resources
 C:\dev\SignalRWindowsService\obj\Debug\SignalRWindowsService.DistributionService.resources
 C:\dev\SignalRWindowsService\obj\Debug\DistributionService.csproj.GenerateResource.Cache
 C:\dev\SignalRWindowsService\obj\Debug\SignalRWindowsService.exe.manifest
 C:\dev\SignalRWindowsService\obj\Debug\SignalRWindowsService.application
+C:\dev\SignalRWindowsService\bin\Debug\Newtonsoft.Json.dll
+C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.dll
+C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.pdb
