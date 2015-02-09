@@ -5,6 +5,9 @@ using Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin;
 using SignalRWindowsService.Model;
+using System.Collections.Concurrent;
+using System;
+using TwangRLibrary.Model;
 
 [assembly: OwinStartup(typeof(SignalRWindowsService.Startup))]
 namespace SignalRWindowsService
@@ -50,6 +53,8 @@ namespace SignalRWindowsService
     }
     public class DistributionHub : Hub
     {
+        public static ConcurrentDictionary<UserData, string> UserList = new ConcurrentDictionary<UserData, string>();
+        /*--------------------------------------------------------------------------------------------------------------------*/
         public void GetBills()
         {
             Bills Bills = new Bills();
@@ -59,9 +64,15 @@ namespace SignalRWindowsService
 
         /*--------------------------------------------------TwangR Functions--------------------------------------------------*/
 
-        public void Send(string name, string messsage)
+        public void Send(string MessageID, string messageUp, string sender, bool isSelf)
         {
-            Clients.All.addMessage(name, messsage);
+            Message message = new Message();
+            message.messageID = MessageID;
+            message.sender = sender;
+            message.message = messageUp;
+            message.isSelf = isSelf;
+            Clients.All.addMessage(MessageID, messageUp, sender, isSelf);
+            Clients.Caller.messageRecieved(MessageID, messageUp, sender, isSelf);
         }
 
         /*--------------------------------------------------------------------------------------------------------------------*/

@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="15344">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="17408">
       <assemblyIdentity name="SignalRWindowsService" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XNWUZTZJHMDq9HMPGyRiWCuHdaOarFzhGI0618YEb8o=</dsig:DigestValue>
+        <dsig:DigestValue>XbMo4c8BMXu260Y0xD1m1e/1DIZ6y5mG7w1ZukEYTUg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
