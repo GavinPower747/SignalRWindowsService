@@ -20,7 +20,7 @@ namespace TwangRLibrary.Data
             List<UserData> users = LoginDbToUserData(_dataContext.TwangR_user_login(username, password, ref status));
 
             if (!status.Equals("Successful"))
-                throw new BadLoginException(status);
+                throw new UserException(status);
 
             return users[0];
         }
@@ -37,6 +37,15 @@ namespace TwangRLibrary.Data
             }).ToList();
         }
 
-        public string Register(UserData data) { return "Implement Me"; }
+        public UserData Register(UserData data) 
+        {
+            string status = "";
+            List<UserData> users = LoginDbToUserData(_dataContext.TwangR_user_register(data.UserName, data.UserPassword, data.UserRealName, data.UserEmail, data.UserNickName, ref status));
+
+            if (!status.Equals("Successful"))
+                throw new UserException(status);
+
+            return users[0];
+        }
     }
 }

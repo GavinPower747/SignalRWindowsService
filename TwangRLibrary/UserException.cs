@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace TwangRLibrary
 {
-    public class BadLoginException : Exception, ISerializable
+    public class UserException : Exception, ISerializable
     {
-        public BadLoginException(string message) : base(message) { }
+        public UserException(string message) : base(message) { }
     }
 }

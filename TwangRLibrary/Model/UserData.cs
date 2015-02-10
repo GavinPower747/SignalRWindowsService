@@ -34,10 +34,24 @@ namespace TwangRLibrary.Model
             {
                 return repo.Login(username, password);
             }
-            catch(BadLoginException BLE)
+            catch(UserException UE)
             {
                 dynamic Error = new ExpandoObject();
-                Error.status = BLE.Message;
+                Error.status = UE.Message;
+                return Error;
+            }
+        }
+
+        public dynamic Register(UserData user)
+        {
+            try
+            {
+                return repo.Register(user);
+            }
+            catch(UserException UE)
+            {
+                dynamic Error = new ExpandoObject();
+                Error.status = UE.Message;
                 return Error;
             }
         }

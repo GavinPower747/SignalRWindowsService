@@ -90,6 +90,23 @@ namespace SignalRWindowsService
             }
         }
 
+        public void Register(string userName, string userPassword, string userRealName, string userEmail, string userNickName)
+        {
+            dynamic user = new UserData();
+            user.UserName = userName;
+            user.UserPassword = userPassword;
+            user.UserRealName = userRealName;
+            user.UserEmail = userEmail;
+            user.UserNickName = userNickName;
+
+            user = user.Register(user);
+
+            if (user is UserData)
+                Clients.Caller.registerSuccess(user.UserId, user.UserName, user.UserRealName, user.UserEmail, user.UserNickName);
+            else
+                Clients.Caller.registerFailure(user.status);
+        }
+
         /*--------------------------------------------------------------------------------------------------------------------*/
         public void TestConnection()
         {

@@ -91,6 +91,14 @@ namespace TwangRLibrary.Data
 			status = ((string)(result.GetParameterValue(2)));
 			return ((ISingleResult<LoginDB>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_user_register")]
+		public ISingleResult<LoginDB> TwangR_user_register([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string userpassword, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string userRealName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string userEmail, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string userNickName, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] ref string status)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), username, userpassword, userRealName, userEmail, userNickName, status);
+			status = ((string)(result.GetParameterValue(5)));
+			return ((ISingleResult<LoginDB>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TwangR_data_chatlogs")]

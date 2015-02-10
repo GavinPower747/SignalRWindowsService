@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BadLoginException.cs" />
+    <Compile Include="UserException.cs" />
     <Compile Include="Data\ITwangRRepo.cs" />
     <Compile Include="Data\TwangR.designer.cs">
       <AutoGen>True</AutoGen>

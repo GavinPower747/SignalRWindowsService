@@ -25,4 +25,13 @@
     <Parameter Name="status" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
     <ElementType IdRef="ID1" />
   </Function>
+  <Function Name="dbo.TwangR_user_register" Method="TwangR_user_register">
+    <Parameter Name="username" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="userpassword" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="userRealName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="userEmail" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="userNickName" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="status" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <ElementType IdRef="ID1" />
+  </Function>
 </Database>
