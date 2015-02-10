@@ -78,9 +78,16 @@ namespace SignalRWindowsService
 
         public void Login(string Username, string Password)
         {
-            dynamic user = new ExpandoObject();
+            dynamic user = new UserData();
             user = user.Login(Username, Password);
-            Clients.Caller.loginResult();
+
+            if (user is UserData)
+                Clients.Caller.loginSuccess(user.UserId, user.UserName, user.UserRealName, user.UserEmail, user.UserNickName);
+            else
+            {
+                string status = user.status;
+                Clients.Caller.loginFailure(status);
+            }
         }
 
         /*--------------------------------------------------------------------------------------------------------------------*/

@@ -85,9 +85,10 @@ namespace TwangRLibrary.Data
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_user_login")]
-		public ISingleResult<LoginDB> TwangR_user_login([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string password)
+		public ISingleResult<LoginDB> TwangR_user_login([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] ref string status)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), username, password);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), username, password, status);
+			status = ((string)(result.GetParameterValue(2)));
 			return ((ISingleResult<LoginDB>)(result.ReturnValue));
 		}
 	}

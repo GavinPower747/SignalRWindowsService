@@ -10,7 +10,7 @@ namespace TwangRLibrary.Data
     public interface ITwangRRepo
     {
         void LogMessage(Message message);
-        dynamic Login(string username, string password);
+        UserData Login(string username, string password);
         string Register(UserData data);
     }
 }

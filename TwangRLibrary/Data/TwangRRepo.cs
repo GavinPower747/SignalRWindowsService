@@ -14,15 +14,13 @@ namespace TwangRLibrary.Data
 
         public void LogMessage(Message message) { }
 
-        public dynamic Login(string username, string password)
+        public UserData Login(string username, string password)
         {
-            dynamic user = new ExpandoObject();
-            List<UserData> users = LoginDbToUserData(_dataContext.TwangR_user_login(username, password));
+            string status = "";
+            List<UserData> users = LoginDbToUserData(_dataContext.TwangR_user_login(username, password, ref status));
 
-            if(users.Count == 0)
-            {
-                throw new BadLoginException("User not found");
-            }
+            if (!status.Equals("Successful"))
+                throw new BadLoginException(status);
 
             return users[0];
         }

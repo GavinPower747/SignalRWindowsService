@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace TwangRLibrary.Model
         public string UserRealName { get; set; }
         public string UserEmail { get; set; }
         public string UserNickName { get; set; }
+        public string UserStatus { get; set; }
 
         public List<Chat> ActiveChats { get; set; }
 
@@ -34,7 +36,9 @@ namespace TwangRLibrary.Model
             }
             catch(BadLoginException BLE)
             {
-
+                dynamic Error = new ExpandoObject();
+                Error.status = BLE.Message;
+                return Error;
             }
         }
     }

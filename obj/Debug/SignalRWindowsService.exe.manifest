@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="22000">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="23536">
       <assemblyIdentity name="SignalRWindowsService" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ASsJCDQgmmvFCgPQegXK6Ah87JTu+LjEfRwBFU5lC1c=</dsig:DigestValue>
+        <dsig:DigestValue>2EKG9kXYCeh1/nsSahuX/pR8HxcXIXg7SiHJ8Y0Toq0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -174,24 +174,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwangRLibrary.dll" size="13824">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwangRLibrary.dll" size="16896">
       <assemblyIdentity name="TwangRLibrary" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Sf9MfZ0NO0kScJ5x/4TK7T/7qplXpCm/PEHSEzRrTlk=</dsig:DigestValue>
+        <dsig:DigestValue>w5hyrQMMmI15ZAGF+PDctRf9Eru9FShUdWCbvBFIjrw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="SignalRWindowsService.exe.config" size="1699">
+  <file name="SignalRWindowsService.exe.config" size="4274">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Ua40u4h+8if+gMb6N6p51W25AqlzlbJfOWpAxdOFyHQ=</dsig:DigestValue>
+      <dsig:DigestValue>bl7nr6lI8JzCp28TDU/Or7oxJt3KupEnJcJI+i6FZoA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
