@@ -12,5 +12,9 @@ namespace TwangRLibrary.Data
         void LogMessage(Message message);
         UserData Login(string username, string password);
         UserData Register(UserData data);
+        List<Status> GetNewsFeed(int UserId);
+        List<Status> GetAllPostsByUser(int UserId);
+        void InsertStatus(Status status);
+        void UpdateStatus(Status status);
     }
 }

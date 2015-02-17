@@ -14,5 +14,31 @@
         <elementListCompartment Id="1f7ac2c1-c6f7-4c32-b683-71426f3a9b2f" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="ed2aeb8e-8c10-4086-8dac-42d1028ce109" isExpanded="false" absoluteBounds="3.125, 0.5, 2, 0.45">
+      <DataClassMoniker Name="/TwangRDataContext/FriendDB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d5bcb3fc-2b80-49cb-8897-382a715698f1" absoluteBounds="3.1399999999999997, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 0.725); (3.125 : 0.725)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/TwangRDataContext/LoginDB/LoginDB_TwangR_data_Friend" />
+      <nodes>
+        <classShapeMoniker Id="8ccb2d08-9e86-4c48-a99b-919bf70ec0e3" />
+        <classShapeMoniker Id="ed2aeb8e-8c10-4086-8dac-42d1028ce109" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 0.55); (3.125 : 0.55)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/TwangRDataContext/LoginDB/LoginDB_TwangR_data_Friend1" />
+      <nodes>
+        <classShapeMoniker Id="8ccb2d08-9e86-4c48-a99b-919bf70ec0e3" />
+        <classShapeMoniker Id="ed2aeb8e-8c10-4086-8dac-42d1028ce109" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="fea7b0c1-fff5-4787-be5a-877850203311" isExpanded="false" absoluteBounds="3.125, 1.125, 2, 0.45">
+      <DataClassMoniker Name="/TwangRDataContext/StatusDB" />
+      <nestedChildShapes>
+        <elementListCompartment Id="55339492-e775-4b6b-965d-8a9b2d869b4b" absoluteBounds="3.1399999999999997, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

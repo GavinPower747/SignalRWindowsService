@@ -9,6 +9,7 @@ using System.Collections.Concurrent;
 using System;
 using TwangRLibrary.Model;
 using System.Dynamic;
+using System.Collections.Generic;
 
 [assembly: OwinStartup(typeof(SignalRWindowsService.Startup))]
 namespace SignalRWindowsService
@@ -105,6 +106,28 @@ namespace SignalRWindowsService
                 Clients.Caller.registerSuccess(user.UserId, user.UserName, user.UserRealName, user.UserEmail, user.UserNickName);
             else
                 Clients.Caller.registerFailure(user.status);
+        }
+
+        public void InsertStatus(string StatusContent, int UserId)
+        {
+            Status Status = new Status();
+            Status.StatusContent = StatusContent;
+            Status.StatusAuthor = UserId;
+            Status.InsertStatus(Status);
+        }
+
+        public IEnumerable<Status> GetNewsFeed(int UserID)
+        {
+            Statuses statuses = new Statuses();
+            statuses.GetNewsFeed(UserID);
+            return statuses;
+        }
+
+        public IEnumerable<Status> GetPostsByUser(int UserId)
+        {
+            Statuses statuses = new Statuses();
+            statuses.GetAllPostsByUser(UserId);
+            return statuses;
         }
 
         /*--------------------------------------------------------------------------------------------------------------------*/

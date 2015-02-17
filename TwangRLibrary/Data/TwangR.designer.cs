@@ -36,6 +36,12 @@ namespace TwangRLibrary.Data
     partial void InsertLoginDB(LoginDB instance);
     partial void UpdateLoginDB(LoginDB instance);
     partial void DeleteLoginDB(LoginDB instance);
+    partial void InsertFriendDB(FriendDB instance);
+    partial void UpdateFriendDB(FriendDB instance);
+    partial void DeleteFriendDB(FriendDB instance);
+    partial void InsertStatusDB(StatusDB instance);
+    partial void UpdateStatusDB(StatusDB instance);
+    partial void DeleteStatusDB(StatusDB instance);
     #endregion
 		
 		public TwangRDataContext() : 
@@ -84,6 +90,22 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<FriendDB> FriendDBs
+		{
+			get
+			{
+				return this.GetTable<FriendDB>();
+			}
+		}
+		
+		public System.Data.Linq.Table<StatusDB> StatusDBs
+		{
+			get
+			{
+				return this.GetTable<StatusDB>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_user_login")]
 		public ISingleResult<LoginDB> TwangR_user_login([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string username, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(MAX)")] string password, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(100)")] ref string status)
 		{
@@ -98,6 +120,45 @@ namespace TwangRLibrary.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), username, userpassword, userRealName, userEmail, userNickName, status);
 			status = ((string)(result.GetParameterValue(5)));
 			return ((ISingleResult<LoginDB>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_user_GetFriendList")]
+		public ISingleResult<LoginDB> TwangR_user_GetFriendList([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userId)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userId);
+			return ((ISingleResult<LoginDB>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_acceptfriendrequest")]
+		public void TwangR_data_acceptfriendrequest([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> requestee)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_logfriendrequest")]
+		public void TwangR_data_logfriendrequest([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> requestee)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee);
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_getnewsfeed")]
+		public ISingleResult<StatusDB> TwangR_data_getnewsfeed([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<StatusDB>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_getallpostsbyuser")]
+		public ISingleResult<StatusDB> TwangR_data_getallpostsbyuser([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<StatusDB>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_insertnewpost")]
+		public void TwangR_data_insertnewpost([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusContent", DbType="VarChar(MAX)")] string statusContent, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		{
+			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), statusContent, userID);
 		}
 	}
 	
@@ -277,6 +338,10 @@ namespace TwangRLibrary.Data
 		
 		private string _UserNickName;
 		
+		private EntitySet<FriendDB> _TwangR_data_Friends;
+		
+		private EntitySet<FriendDB> _FriendDBs;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -297,6 +362,8 @@ namespace TwangRLibrary.Data
 		
 		public LoginDB()
 		{
+			this._TwangR_data_Friends = new EntitySet<FriendDB>(new Action<FriendDB>(this.attach_TwangR_data_Friends), new Action<FriendDB>(this.detach_TwangR_data_Friends));
+			this._FriendDBs = new EntitySet<FriendDB>(new Action<FriendDB>(this.attach_FriendDBs), new Action<FriendDB>(this.detach_FriendDBs));
 			OnCreated();
 		}
 		
@@ -416,6 +483,454 @@ namespace TwangRLibrary.Data
 					this._UserNickName = value;
 					this.SendPropertyChanged("UserNickName");
 					this.OnUserNickNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend", Storage="_TwangR_data_Friends", ThisKey="UserID", OtherKey="User1")]
+		public EntitySet<FriendDB> TwangR_data_Friends
+		{
+			get
+			{
+				return this._TwangR_data_Friends;
+			}
+			set
+			{
+				this._TwangR_data_Friends.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend1", Storage="_FriendDBs", ThisKey="UserID", OtherKey="User2")]
+		public EntitySet<FriendDB> FriendDBs
+		{
+			get
+			{
+				return this._FriendDBs;
+			}
+			set
+			{
+				this._FriendDBs.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TwangR_data_Friends(FriendDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoginDB = this;
+		}
+		
+		private void detach_TwangR_data_Friends(FriendDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoginDB = null;
+		}
+		
+		private void attach_FriendDBs(FriendDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoginDB1 = this;
+		}
+		
+		private void detach_FriendDBs(FriendDB entity)
+		{
+			this.SendPropertyChanging();
+			entity.LoginDB1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TwangR_data_Friends")]
+	public partial class FriendDB : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _User1;
+		
+		private int _User2;
+		
+		private System.DateTime _RequstDate;
+		
+		private System.Nullable<System.DateTime> _AcceptDate;
+		
+		private System.Nullable<int> _Sender;
+		
+		private EntityRef<LoginDB> _LoginDB;
+		
+		private EntityRef<LoginDB> _LoginDB1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUser1Changing(int value);
+    partial void OnUser1Changed();
+    partial void OnUser2Changing(int value);
+    partial void OnUser2Changed();
+    partial void OnRequstDateChanging(System.DateTime value);
+    partial void OnRequstDateChanged();
+    partial void OnAcceptDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnAcceptDateChanged();
+    partial void OnSenderChanging(System.Nullable<int> value);
+    partial void OnSenderChanged();
+    #endregion
+		
+		public FriendDB()
+		{
+			this._LoginDB = default(EntityRef<LoginDB>);
+			this._LoginDB1 = default(EntityRef<LoginDB>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_User1", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int User1
+		{
+			get
+			{
+				return this._User1;
+			}
+			set
+			{
+				if ((this._User1 != value))
+				{
+					if (this._LoginDB.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUser1Changing(value);
+					this.SendPropertyChanging();
+					this._User1 = value;
+					this.SendPropertyChanged("User1");
+					this.OnUser1Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_User2", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int User2
+		{
+			get
+			{
+				return this._User2;
+			}
+			set
+			{
+				if ((this._User2 != value))
+				{
+					if (this._LoginDB1.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUser2Changing(value);
+					this.SendPropertyChanging();
+					this._User2 = value;
+					this.SendPropertyChanged("User2");
+					this.OnUser2Changed();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RequstDate", DbType="DateTime NOT NULL")]
+		public System.DateTime RequstDate
+		{
+			get
+			{
+				return this._RequstDate;
+			}
+			set
+			{
+				if ((this._RequstDate != value))
+				{
+					this.OnRequstDateChanging(value);
+					this.SendPropertyChanging();
+					this._RequstDate = value;
+					this.SendPropertyChanged("RequstDate");
+					this.OnRequstDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AcceptDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> AcceptDate
+		{
+			get
+			{
+				return this._AcceptDate;
+			}
+			set
+			{
+				if ((this._AcceptDate != value))
+				{
+					this.OnAcceptDateChanging(value);
+					this.SendPropertyChanging();
+					this._AcceptDate = value;
+					this.SendPropertyChanged("AcceptDate");
+					this.OnAcceptDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Sender", DbType="Int")]
+		public System.Nullable<int> Sender
+		{
+			get
+			{
+				return this._Sender;
+			}
+			set
+			{
+				if ((this._Sender != value))
+				{
+					this.OnSenderChanging(value);
+					this.SendPropertyChanging();
+					this._Sender = value;
+					this.SendPropertyChanged("Sender");
+					this.OnSenderChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend", Storage="_LoginDB", ThisKey="User1", OtherKey="UserID", IsForeignKey=true)]
+		public LoginDB LoginDB
+		{
+			get
+			{
+				return this._LoginDB.Entity;
+			}
+			set
+			{
+				LoginDB previousValue = this._LoginDB.Entity;
+				if (((previousValue != value) 
+							|| (this._LoginDB.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LoginDB.Entity = null;
+						previousValue.TwangR_data_Friends.Remove(this);
+					}
+					this._LoginDB.Entity = value;
+					if ((value != null))
+					{
+						value.TwangR_data_Friends.Add(this);
+						this._User1 = value.UserID;
+					}
+					else
+					{
+						this._User1 = default(int);
+					}
+					this.SendPropertyChanged("LoginDB");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend1", Storage="_LoginDB1", ThisKey="User2", OtherKey="UserID", IsForeignKey=true)]
+		public LoginDB LoginDB1
+		{
+			get
+			{
+				return this._LoginDB1.Entity;
+			}
+			set
+			{
+				LoginDB previousValue = this._LoginDB1.Entity;
+				if (((previousValue != value) 
+							|| (this._LoginDB1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._LoginDB1.Entity = null;
+						previousValue.FriendDBs.Remove(this);
+					}
+					this._LoginDB1.Entity = value;
+					if ((value != null))
+					{
+						value.FriendDBs.Add(this);
+						this._User2 = value.UserID;
+					}
+					else
+					{
+						this._User2 = default(int);
+					}
+					this.SendPropertyChanged("LoginDB1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TwangR_data_Status")]
+	public partial class StatusDB : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _StatusID;
+		
+		private string _StatusContent;
+		
+		private int _StatusAuthor;
+		
+		private int _StatusLikes;
+		
+		private System.DateTime _LogDate;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnStatusIDChanging(int value);
+    partial void OnStatusIDChanged();
+    partial void OnStatusContentChanging(string value);
+    partial void OnStatusContentChanged();
+    partial void OnStatusAuthorChanging(int value);
+    partial void OnStatusAuthorChanged();
+    partial void OnStatusLikesChanging(int value);
+    partial void OnStatusLikesChanged();
+    partial void OnLogDateChanging(System.DateTime value);
+    partial void OnLogDateChanged();
+    #endregion
+		
+		public StatusDB()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int StatusID
+		{
+			get
+			{
+				return this._StatusID;
+			}
+			set
+			{
+				if ((this._StatusID != value))
+				{
+					this.OnStatusIDChanging(value);
+					this.SendPropertyChanging();
+					this._StatusID = value;
+					this.SendPropertyChanged("StatusID");
+					this.OnStatusIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusContent", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string StatusContent
+		{
+			get
+			{
+				return this._StatusContent;
+			}
+			set
+			{
+				if ((this._StatusContent != value))
+				{
+					this.OnStatusContentChanging(value);
+					this.SendPropertyChanging();
+					this._StatusContent = value;
+					this.SendPropertyChanged("StatusContent");
+					this.OnStatusContentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusAuthor", DbType="Int NOT NULL")]
+		public int StatusAuthor
+		{
+			get
+			{
+				return this._StatusAuthor;
+			}
+			set
+			{
+				if ((this._StatusAuthor != value))
+				{
+					this.OnStatusAuthorChanging(value);
+					this.SendPropertyChanging();
+					this._StatusAuthor = value;
+					this.SendPropertyChanged("StatusAuthor");
+					this.OnStatusAuthorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusLikes", DbType="Int NOT NULL")]
+		public int StatusLikes
+		{
+			get
+			{
+				return this._StatusLikes;
+			}
+			set
+			{
+				if ((this._StatusLikes != value))
+				{
+					this.OnStatusLikesChanging(value);
+					this.SendPropertyChanging();
+					this._StatusLikes = value;
+					this.SendPropertyChanged("StatusLikes");
+					this.OnStatusLikesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogDate", DbType="DateTime NOT NULL")]
+		public System.DateTime LogDate
+		{
+			get
+			{
+				return this._LogDate;
+			}
+			set
+			{
+				if ((this._LogDate != value))
+				{
+					this.OnLogDateChanging(value);
+					this.SendPropertyChanging();
+					this._LogDate = value;
+					this.SendPropertyChanged("LogDate");
+					this.OnLogDateChanged();
 				}
 			}
 		}

@@ -32,7 +32,7 @@ namespace TwangRLibrary.Data
                 UserName = login.UserName,
                 UserPassword = login.PasswordHash,
                 UserEmail = login.UserEmail,
-                UserNickName = login.UserEmail,
+                UserNickName = login.UserNickName,
                 UserRealName = login.UserRealName
             }).ToList();
         }
@@ -46,6 +46,38 @@ namespace TwangRLibrary.Data
                 throw new UserException(status);
 
             return users[0];
+        }
+
+        public List<Status> StatusDBToStatus(IEnumerable<StatusDB> StatusDBs)
+        {
+            return StatusDBs.Select(StatusDB => new Status
+            {
+                StatusId = StatusDB.StatusID,
+                StatusAuthor = StatusDB.StatusAuthor,
+                StatusContent = StatusDB.StatusContent,
+                StatusLikes = StatusDB.StatusLikes,
+                LogDate = StatusDB.LogDate.ToString()
+            }).ToList();
+        }
+
+        public List<Status> GetNewsFeed(int UserId)
+        {
+            return StatusDBToStatus(_dataContext.TwangR_data_getnewsfeed(UserId));
+        }
+
+        public List<Status> GetAllPostsByUser(int UserId)
+        {
+            return StatusDBToStatus(_dataContext.TwangR_data_getallpostsbyuser(UserId));
+        }
+
+        public void InsertStatus(Status status)
+        {
+            _dataContext.TwangR_data_insertnewpost(status.StatusContent, status.StatusAuthor);
+        }
+
+        public void UpdateStatus(Status status)
+        {
+            throw new NotImplementedException();
         }
     }
 }
