@@ -54,3 +54,9 @@ C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.dll
 C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.pdb
 C:\TFSSource\SignalRWindowsService\bin\Debug\TwangRLibrary.dll
 C:\TFSSource\SignalRWindowsService\bin\Debug\TwangRLibrary.pdb
+C:\TFSSource\SignalRWindowsService\bin\Debug\System.Net.Http.Formatting.dll
+C:\TFSSource\SignalRWindowsService\bin\Debug\System.Web.Http.dll
+C:\TFSSource\SignalRWindowsService\bin\Debug\System.Web.Http.Tracing.dll
+C:\TFSSource\SignalRWindowsService\bin\Debug\System.Net.Http.Formatting.xml
+C:\TFSSource\SignalRWindowsService\bin\Debug\System.Web.Http.xml
+C:\TFSSource\SignalRWindowsService\bin\Debug\System.Web.Http.Tracing.xml

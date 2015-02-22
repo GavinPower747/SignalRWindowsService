@@ -17,8 +17,8 @@
       <Column Name="UserEmail" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UserRealName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="UserNickName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="LoginDB_TwangR_data_Friend" Member="TwangR_data_Friends" ThisKey="UserID" OtherKey="User1" Type="FriendDB" />
-      <Association Name="LoginDB_TwangR_data_Friend1" Member="FriendDBs" ThisKey="UserID" OtherKey="User2" Type="FriendDB" />
+      <Association Name="LoginDB_FriendDB" Member="TwangR_data_Friends" ThisKey="UserID" OtherKey="User1" Type="FriendDB" />
+      <Association Name="LoginDB_FriendDB1" Member="FriendDBs" ThisKey="UserID" OtherKey="User2" Type="FriendDB" />
     </Type>
   </Table>
   <Table Name="dbo.TwangR_data_Friends" Member="FriendDBs">
@@ -28,17 +28,18 @@
       <Column Name="RequstDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="AcceptDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Sender" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="LoginDB_TwangR_data_Friend" Member="LoginDB" ThisKey="User1" OtherKey="UserID" Type="LoginDB" IsForeignKey="true" />
-      <Association Name="LoginDB_TwangR_data_Friend1" Member="LoginDB1" ThisKey="User2" OtherKey="UserID" Type="LoginDB" IsForeignKey="true" />
+      <Association Name="LoginDB_FriendDB" Member="LoginDB" ThisKey="User1" OtherKey="UserID" Type="LoginDB" IsForeignKey="true" />
+      <Association Name="LoginDB_FriendDB1" Member="LoginDB1" ThisKey="User2" OtherKey="UserID" Type="LoginDB" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.TwangR_data_Status" Member="StatusDBs">
     <Type Name="StatusDB" Id="ID2">
       <Column Name="StatusID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="StatusContent" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="StatusAuthor" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusContent" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StatusAuthorID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StatusAuthor" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="StatusLikes" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="LogDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Logdate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Function Name="dbo.TwangR_user_login" Method="TwangR_user_login">
@@ -60,24 +61,27 @@
     <Parameter Name="userId" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID1" />
   </Function>
-  <Function Name="dbo.TwangR_data_acceptfriendrequest" Method="TwangR_data_acceptfriendrequest">
+  <Function Name="dbo.TwangR_data_acceptfriendrequest" Method="TwangR_data_acceptfriendrequest" IsComposable="true">
     <Parameter Name="sender" Type="System.Int32" DbType="Int" />
     <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.TwangR_data_logfriendrequest" Method="TwangR_data_logfriendrequest">
+  <Function Name="dbo.TwangR_data_logfriendrequest" Method="TwangR_data_logfriendrequest" IsComposable="true">
     <Parameter Name="sender" Type="System.Int32" DbType="Int" />
     <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
   </Function>
-  <Function Name="dbo.TwangR_data_getnewsfeed" Method="TwangR_data_getnewsfeed">
-    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID2" />
+  <Function Name="dbo.TwangR_data_insertnewpost" Method="TwangR_data_insertnewpost" IsComposable="true">
+    <Parameter Name="StatusContent" Parameter="statusContent" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="object" />
   </Function>
   <Function Name="dbo.TwangR_data_getallpostsbyuser" Method="TwangR_data_getallpostsbyuser">
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID2" />
   </Function>
-  <Function Name="dbo.TwangR_data_insertnewpost" Method="TwangR_data_insertnewpost">
-    <Parameter Name="StatusContent" Parameter="statusContent" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+  <Function Name="dbo.TwangR_data_getnewsfeed" Method="TwangR_data_getnewsfeed">
+    <Parameter Name="userID" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID2" />
   </Function>
 </Database>

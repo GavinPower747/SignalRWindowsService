@@ -11,7 +11,8 @@ namespace TwangRLibrary.Model
     {
         public int StatusId { get; set; }
         public string StatusContent { get; set; }
-        public int StatusAuthor { get; set; }
+        public int StatusAuthorID { get; set; }
+        public string StatusAuthor { get; set; }
         public int StatusLikes { get; set; }
         public string LogDate { get; set; }
 

@@ -107,23 +107,23 @@ namespace SignalRWindowsService
             else
                 Clients.Caller.registerFailure(user.status);
         }
-
+        
         public void InsertStatus(string StatusContent, int UserId)
         {
             Status Status = new Status();
             Status.StatusContent = StatusContent;
-            Status.StatusAuthor = UserId;
+            Status.StatusAuthorID = UserId;
             Status.InsertStatus(Status);
         }
 
-        public IEnumerable<Status> GetNewsFeed(int UserID)
+        public Statuses GetNewsFeed(int UserID)
         {
             Statuses statuses = new Statuses();
             statuses.GetNewsFeed(UserID);
             return statuses;
         }
 
-        public IEnumerable<Status> GetPostsByUser(int UserId)
+        public Statuses GetPostsByUser(int UserId)
         {
             Statuses statuses = new Statuses();
             statuses.GetAllPostsByUser(UserId);

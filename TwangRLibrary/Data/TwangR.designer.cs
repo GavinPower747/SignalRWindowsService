@@ -129,23 +129,22 @@ namespace TwangRLibrary.Data
 			return ((ISingleResult<LoginDB>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_acceptfriendrequest")]
-		public void TwangR_data_acceptfriendrequest([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> requestee)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_acceptfriendrequest", IsComposable=true)]
+		public object TwangR_data_acceptfriendrequest([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> requestee)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_logfriendrequest")]
-		public void TwangR_data_logfriendrequest([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> requestee)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_logfriendrequest", IsComposable=true)]
+		public object TwangR_data_logfriendrequest([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> sender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> requestee)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee);
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee).ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_getnewsfeed")]
-		public ISingleResult<StatusDB> TwangR_data_getnewsfeed([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_insertnewpost", IsComposable=true)]
+		public object TwangR_data_insertnewpost([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusContent", DbType="VarChar(MAX)")] string statusContent, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
-			return ((ISingleResult<StatusDB>)(result.ReturnValue));
+			return ((object)(this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), statusContent, userID).ReturnValue));
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_getallpostsbyuser")]
@@ -155,10 +154,11 @@ namespace TwangRLibrary.Data
 			return ((ISingleResult<StatusDB>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_insertnewpost")]
-		public void TwangR_data_insertnewpost([global::System.Data.Linq.Mapping.ParameterAttribute(Name="StatusContent", DbType="VarChar(MAX)")] string statusContent, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_data_getnewsfeed")]
+		public ISingleResult<StatusDB> TwangR_data_getnewsfeed([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> userID)
 		{
-			this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), statusContent, userID);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID);
+			return ((ISingleResult<StatusDB>)(result.ReturnValue));
 		}
 	}
 	
@@ -487,7 +487,7 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend", Storage="_TwangR_data_Friends", ThisKey="UserID", OtherKey="User1")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_FriendDB", Storage="_TwangR_data_Friends", ThisKey="UserID", OtherKey="User1")]
 		public EntitySet<FriendDB> TwangR_data_Friends
 		{
 			get
@@ -500,7 +500,7 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend1", Storage="_FriendDBs", ThisKey="UserID", OtherKey="User2")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_FriendDB1", Storage="_FriendDBs", ThisKey="UserID", OtherKey="User2")]
 		public EntitySet<FriendDB> FriendDBs
 		{
 			get
@@ -709,7 +709,7 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend", Storage="_LoginDB", ThisKey="User1", OtherKey="UserID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_FriendDB", Storage="_LoginDB", ThisKey="User1", OtherKey="UserID", IsForeignKey=true)]
 		public LoginDB LoginDB
 		{
 			get
@@ -743,7 +743,7 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_TwangR_data_Friend1", Storage="_LoginDB1", ThisKey="User2", OtherKey="UserID", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="LoginDB_FriendDB1", Storage="_LoginDB1", ThisKey="User2", OtherKey="UserID", IsForeignKey=true)]
 		public LoginDB LoginDB1
 		{
 			get
@@ -808,11 +808,13 @@ namespace TwangRLibrary.Data
 		
 		private string _StatusContent;
 		
-		private int _StatusAuthor;
+		private int _StatusAuthorID;
+		
+		private string _StatusAuthor;
 		
 		private int _StatusLikes;
 		
-		private System.DateTime _LogDate;
+		private System.DateTime _Logdate;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -822,12 +824,14 @@ namespace TwangRLibrary.Data
     partial void OnStatusIDChanged();
     partial void OnStatusContentChanging(string value);
     partial void OnStatusContentChanged();
-    partial void OnStatusAuthorChanging(int value);
+    partial void OnStatusAuthorIDChanging(int value);
+    partial void OnStatusAuthorIDChanged();
+    partial void OnStatusAuthorChanging(string value);
     partial void OnStatusAuthorChanged();
     partial void OnStatusLikesChanging(int value);
     partial void OnStatusLikesChanged();
-    partial void OnLogDateChanging(System.DateTime value);
-    partial void OnLogDateChanged();
+    partial void OnLogdateChanging(System.DateTime value);
+    partial void OnLogdateChanged();
     #endregion
 		
 		public StatusDB()
@@ -855,7 +859,7 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusContent", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusContent", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string StatusContent
 		{
 			get
@@ -875,8 +879,28 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusAuthor", DbType="Int NOT NULL")]
-		public int StatusAuthor
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusAuthorID", DbType="Int NOT NULL")]
+		public int StatusAuthorID
+		{
+			get
+			{
+				return this._StatusAuthorID;
+			}
+			set
+			{
+				if ((this._StatusAuthorID != value))
+				{
+					this.OnStatusAuthorIDChanging(value);
+					this.SendPropertyChanging();
+					this._StatusAuthorID = value;
+					this.SendPropertyChanged("StatusAuthorID");
+					this.OnStatusAuthorIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StatusAuthor", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string StatusAuthor
 		{
 			get
 			{
@@ -915,22 +939,22 @@ namespace TwangRLibrary.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogDate", DbType="DateTime NOT NULL")]
-		public System.DateTime LogDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Logdate", DbType="DateTime NOT NULL")]
+		public System.DateTime Logdate
 		{
 			get
 			{
-				return this._LogDate;
+				return this._Logdate;
 			}
 			set
 			{
-				if ((this._LogDate != value))
+				if ((this._Logdate != value))
 				{
-					this.OnLogDateChanging(value);
+					this.OnLogdateChanging(value);
 					this.SendPropertyChanging();
-					this._LogDate = value;
-					this.SendPropertyChanged("LogDate");
-					this.OnLogDateChanged();
+					this._Logdate = value;
+					this.SendPropertyChanged("Logdate");
+					this.OnLogdateChanged();
 				}
 			}
 		}

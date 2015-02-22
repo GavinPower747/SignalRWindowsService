@@ -20,7 +20,7 @@ namespace TwangRLibrary.Data
             List<UserData> users = LoginDbToUserData(_dataContext.TwangR_user_login(username, password, ref status));
 
             if (!status.Equals("Successful"))
-                throw new UserException(status);
+                throw new UserException(status); 
 
             return users[0];
         }
@@ -53,10 +53,11 @@ namespace TwangRLibrary.Data
             return StatusDBs.Select(StatusDB => new Status
             {
                 StatusId = StatusDB.StatusID,
+                StatusAuthorID = StatusDB.StatusAuthorID,
                 StatusAuthor = StatusDB.StatusAuthor,
                 StatusContent = StatusDB.StatusContent,
                 StatusLikes = StatusDB.StatusLikes,
-                LogDate = StatusDB.LogDate.ToString()
+                LogDate = StatusDB.Logdate.ToString()
             }).ToList();
         }
 
@@ -72,7 +73,7 @@ namespace TwangRLibrary.Data
 
         public void InsertStatus(Status status)
         {
-            _dataContext.TwangR_data_insertnewpost(status.StatusContent, status.StatusAuthor);
+            _dataContext.TwangR_data_insertnewpost(status.StatusContent, status.StatusAuthorID);
         }
 
         public void UpdateStatus(Status status)

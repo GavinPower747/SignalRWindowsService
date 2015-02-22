@@ -21,23 +21,23 @@
       </nestedChildShapes>
     </classShape>
     <associationConnector edgePoints="[(2.5 : 0.725); (3.125 : 0.725)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/TwangRDataContext/LoginDB/LoginDB_TwangR_data_Friend" />
+      <AssociationMoniker Name="/TwangRDataContext/LoginDB/LoginDB_FriendDB" />
       <nodes>
         <classShapeMoniker Id="8ccb2d08-9e86-4c48-a99b-919bf70ec0e3" />
         <classShapeMoniker Id="ed2aeb8e-8c10-4086-8dac-42d1028ce109" />
       </nodes>
     </associationConnector>
     <associationConnector edgePoints="[(2.5 : 0.55); (3.125 : 0.55)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/TwangRDataContext/LoginDB/LoginDB_TwangR_data_Friend1" />
+      <AssociationMoniker Name="/TwangRDataContext/LoginDB/LoginDB_FriendDB1" />
       <nodes>
         <classShapeMoniker Id="8ccb2d08-9e86-4c48-a99b-919bf70ec0e3" />
         <classShapeMoniker Id="ed2aeb8e-8c10-4086-8dac-42d1028ce109" />
       </nodes>
     </associationConnector>
-    <classShape Id="fea7b0c1-fff5-4787-be5a-877850203311" isExpanded="false" absoluteBounds="3.125, 1.125, 2, 0.45">
+    <classShape Id="e7abe5e6-c926-4429-822e-03cb067de928" isExpanded="false" absoluteBounds="3.125, 1.125, 2, 0.45">
       <DataClassMoniker Name="/TwangRDataContext/StatusDB" />
       <nestedChildShapes>
-        <elementListCompartment Id="55339492-e775-4b6b-965d-8a9b2d869b4b" absoluteBounds="3.1399999999999997, 1.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="19c5c98b-2f74-4cd9-85cf-c969ee2332a6" absoluteBounds="3.14, 1.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
