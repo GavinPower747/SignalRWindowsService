@@ -74,7 +74,7 @@
   <Function Name="dbo.TwangR_data_insertnewpost" Method="TwangR_data_insertnewpost" IsComposable="true">
     <Parameter Name="StatusContent" Parameter="statusContent" Type="System.String" DbType="VarChar(MAX)" />
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
-    <Return Type="object" />
+    <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.TwangR_data_getallpostsbyuser" Method="TwangR_data_getallpostsbyuser">
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
