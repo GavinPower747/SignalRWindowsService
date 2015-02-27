@@ -69,11 +69,6 @@
   <Function Name="dbo.TwangR_data_logfriendrequest" Method="TwangR_data_logfriendrequest" IsComposable="true">
     <Parameter Name="sender" Type="System.Int32" DbType="Int" />
     <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.TwangR_data_insertnewpost" Method="TwangR_data_insertnewpost" IsComposable="true">
-    <Parameter Name="StatusContent" Parameter="statusContent" Type="System.String" DbType="VarChar(MAX)" />
-    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
   <Function Name="dbo.TwangR_data_getallpostsbyuser" Method="TwangR_data_getallpostsbyuser">
@@ -83,5 +78,14 @@
   <Function Name="dbo.TwangR_data_getnewsfeed" Method="TwangR_data_getnewsfeed">
     <Parameter Name="userID" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID2" />
+  </Function>
+  <Function Name="dbo.TwangR_data_insertnewpost" Method="TwangR_data_insertnewpost">
+    <Parameter Name="StatusContent" Parameter="statusContent" Type="System.String" DbType="VarChar(MAX)" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.Twangr_user_getusersbyname" Method="Twangr_user_getusersbyname">
+    <Parameter Name="QueryText" Parameter="queryText" Type="System.String" DbType="VarChar(50)" />
+    <ElementType IdRef="ID1" />
   </Function>
 </Database>

@@ -24,9 +24,9 @@ namespace TwangRLibrary.Model
             this.repo = repo;
         }
 
-        public void InsertStatus(Status status)
+        public string InsertStatus(Status status)
         {
-            repo.InsertStatus(status);
+            return repo.InsertStatus(status);
         }
 
         public void UpdateStatus(Status status)

@@ -108,12 +108,12 @@ namespace SignalRWindowsService
                 Clients.Caller.registerFailure(user.status);
         }
         
-        public void InsertStatus(string StatusContent, int UserId)
+        public string InsertStatus(string StatusContent, int UserId)
         {
             Status Status = new Status();
             Status.StatusContent = StatusContent;
             Status.StatusAuthorID = UserId;
-            Status.InsertStatus(Status);
+            return Status.InsertStatus(Status);
         }
 
         public Statuses GetNewsFeed(int UserID)
@@ -128,6 +128,13 @@ namespace SignalRWindowsService
             Statuses statuses = new Statuses();
             statuses.GetAllPostsByUser(UserId);
             return statuses;
+        }
+
+        public Users GetUsersByName(string queryText)
+        {
+            Users users = new Users();
+            users.GetUsersByName(queryText);
+            return users;
         }
 
         /*--------------------------------------------------------------------------------------------------------------------*/

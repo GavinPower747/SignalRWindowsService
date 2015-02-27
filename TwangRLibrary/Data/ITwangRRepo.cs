@@ -14,7 +14,8 @@ namespace TwangRLibrary.Data
         UserData Register(UserData data);
         List<Status> GetNewsFeed(int UserId);
         List<Status> GetAllPostsByUser(int UserId);
-        void InsertStatus(Status status);
+        string InsertStatus(Status status);
         void UpdateStatus(Status status);
+        List<UserData> GetUsersByName(string QueryText);
     }
 }

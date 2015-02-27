@@ -71,14 +71,27 @@ namespace TwangRLibrary.Data
             return StatusDBToStatus(_dataContext.TwangR_data_getallpostsbyuser(UserId));
         }
 
-        public void InsertStatus(Status status)
+        public string InsertStatus(Status status)
         {
-            _dataContext.TwangR_data_insertnewpost(status.StatusContent, status.StatusAuthorID);
+            try
+            {
+                _dataContext.TwangR_data_insertnewpost(status.StatusContent, status.StatusAuthorID);
+                return "Passed";
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
         }
 
         public void UpdateStatus(Status status)
         {
             throw new NotImplementedException();
+        }
+
+        public List<UserData> GetUsersByName(string QueryText)
+        {
+            return LoginDbToUserData(_dataContext.Twangr_user_getusersbyname(QueryText).ToList());
         }
     }
 }

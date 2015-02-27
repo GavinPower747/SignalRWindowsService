@@ -157,7 +157,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UlWVv/wUFI41gRY48TKKeJm1Sjh694P0/KLqsNnn7+k=</dsig:DigestValue>
+        <dsig:DigestValue>AkGFoqdA+CKjMgJWKkM9tv/MK78wf+420fGbbHGOFms=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwangRLibrary.dll" size="28160">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwangRLibrary.dll" size="28672">
       <assemblyIdentity name="TwangRLibrary" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cq8NEiWn/p15vZ2UzUL9QEPJbRSbhy/KwRQr8B+WPfk=</dsig:DigestValue>
+        <dsig:DigestValue>IjP8C2vCxH8mZWoXltquf8knv9hpZvdugVv8nPN+JEI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
