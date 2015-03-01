@@ -55,5 +55,25 @@ namespace TwangRLibrary.Model
                 return Error;
             }
         }
+
+        public UserData GetUserById(int userId)
+        {
+            return repo.GetUserById(userId);
+        }
+
+        public void LogFriendRequest(int Sender, int Reciever)
+        {
+            repo.LogFriendRequest(Sender, Reciever);
+        }
+
+        public void AcceptFriendRequest(int Sender, int Reciever)
+        {
+            repo.AcceptFriendRequest(Sender, Reciever);
+        }
+
+        public void DeclineFriendRequest(int sender, int reciever)
+        {
+            repo.DeclineFriendRequest(sender, reciever);
+        }
     }
 }

@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="26096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="26608">
       <assemblyIdentity name="SignalRWindowsService" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AkGFoqdA+CKjMgJWKkM9tv/MK78wf+420fGbbHGOFms=</dsig:DigestValue>
+        <dsig:DigestValue>LQpJ2ypnxCsrPmiwEezETpwvzHTixBK11Xmnjr3SRuQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -210,14 +210,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwangRLibrary.dll" size="28672">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwangRLibrary.dll" size="29696">
       <assemblyIdentity name="TwangRLibrary" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IjP8C2vCxH8mZWoXltquf8knv9hpZvdugVv8nPN+JEI=</dsig:DigestValue>
+        <dsig:DigestValue>ZKP3zNzdJ7rq/ktdILCDMymctu1is9Hzq8IywzzPds4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

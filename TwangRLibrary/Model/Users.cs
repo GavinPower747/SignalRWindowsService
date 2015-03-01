@@ -19,6 +19,16 @@ namespace TwangRLibrary.Model
             _Users = repo.GetUsersByName(QueryText);
         }
 
+        public void GetFriendsList(int UserId)
+        {
+            _Users = repo.GetFriendsList(UserId);
+        }
+
+        public void GetFriendRequests(int UserId)
+        {
+            _Users = repo.GetFriendRequests(UserId);
+        }
+
         public Users() : this(new TwangRRepo()) { }
         public Users(ITwangRRepo repo)
         {

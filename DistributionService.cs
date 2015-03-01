@@ -10,6 +10,7 @@ using System;
 using TwangRLibrary.Model;
 using System.Dynamic;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [assembly: OwinStartup(typeof(SignalRWindowsService.Startup))]
 namespace SignalRWindowsService
@@ -55,7 +56,8 @@ namespace SignalRWindowsService
     }
     public class DistributionHub : Hub
     {
-        public static ConcurrentDictionary<UserData, string> UserList = new ConcurrentDictionary<UserData, string>();
+        public static ConcurrentDictionary<int, string> ConnectionStringList = new ConcurrentDictionary<int, string>();
+        public static ConcurrentDictionary<string, UserData> UserDataList = new ConcurrentDictionary<string, UserData>();
         /*--------------------------------------------------------------------------------------------------------------------*/
         public void GetBills()
         {
@@ -65,6 +67,30 @@ namespace SignalRWindowsService
         }
 
         /*--------------------------------------------------TwangR Functions--------------------------------------------------*/
+
+        public override Task OnDisconnected(bool stopCalled)
+        {
+            UserData user = new UserData();
+            if (UserDataList.TryGetValue(Context.ConnectionId, out user))
+                LeaveRealTime();
+
+            return base.OnDisconnected(stopCalled);
+        }
+
+        public void JoinRealTime(UserData user)
+        {
+            ConnectionStringList.TryAdd(user.UserId, Context.ConnectionId);
+            UserDataList.TryAdd(Context.ConnectionId, user);
+        }
+
+        public void LeaveRealTime()
+        {
+            UserData user = new UserData();
+            string ConnectionId;
+            UserDataList.TryRemove(Context.ConnectionId, out user);
+            ConnectionStringList.TryRemove(user.UserId, out ConnectionId);
+            //Code for refreshing friends user lists goes here
+        }
 
         public void Send(string MessageID, string messageUp, string sender, bool isSelf)
         {
@@ -83,7 +109,10 @@ namespace SignalRWindowsService
             user = user.Login(Username, Password);
 
             if (user is UserData)
+            {
                 Clients.Caller.loginSuccess(user.UserId, user.UserName, user.UserRealName, user.UserEmail, user.UserNickName);
+                JoinRealTime(user);
+            }
             else
             {
                 string status = user.status;
@@ -135,6 +164,95 @@ namespace SignalRWindowsService
             Users users = new Users();
             users.GetUsersByName(queryText);
             return users;
+        }
+
+        public UserData GetUserByID(int userId)
+        {
+            UserData user = new UserData();
+            user = user.GetUserById(userId);
+            return user;
+        }
+
+        public Users GetFriendsList(int UserId)
+        {
+            Users friends = new Users();
+            friends.GetFriendsList(UserId);
+            return friends;
+        }
+
+        public Users GetFriendRequests(int UserId)
+        {
+            Users requests = new Users();
+            requests.GetFriendRequests(UserId);
+            return requests;
+        }
+
+        public string SendFriendRequest(int sender, int reciever)
+        {
+            try
+            {
+                UserData user = new UserData();
+                user.LogFriendRequest(sender, reciever);
+                Clients.Client(ConnectionIdByUserId(reciever)).notifyFriendRequest(sender);
+                return "Passed";
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public string AcceptFriendRequest(int sender, int reciever)
+        {
+            try
+            {
+                UserData user = new UserData();
+                user.AcceptFriendRequest(sender, reciever);
+                Clients.Client(ConnectionIdByUserId(sender)).notifyFriendAccept(reciever);
+                return "Passed";
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public string DeclineFriendRequest(int sender, int reciever)
+        {
+            try
+            {
+                UserData user = new UserData();
+                user.DeclineFriendRequest(sender, reciever);
+                return "Passed";
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
+        public string ConnectionIdByUserId(int UserId)
+        {
+            string ConnectionId;
+            ConnectionStringList.TryGetValue(UserId, out ConnectionId);
+            return ConnectionId;
+        }
+
+        public Users GetOnlineFriends(int UserId)
+        {
+            Users friends = new Users();
+            Users onlineFriends = new Users();
+            friends.GetFriendsList(UserId);
+
+            Parallel.ForEach(friends, friend =>
+            {
+                string ConnectionString;
+                if (ConnectionStringList.TryGetValue(friend.UserId, out ConnectionString))
+                    onlineFriends.Add(friend);
+            });
+
+            return onlineFriends;
+
         }
 
         /*--------------------------------------------------------------------------------------------------------------------*/

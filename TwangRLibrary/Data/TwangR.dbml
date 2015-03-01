@@ -57,20 +57,6 @@
     <Parameter Name="status" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
     <ElementType IdRef="ID1" />
   </Function>
-  <Function Name="dbo.TwangR_user_GetFriendList" Method="TwangR_user_GetFriendList">
-    <Parameter Name="userId" Type="System.Int32" DbType="Int" />
-    <ElementType IdRef="ID1" />
-  </Function>
-  <Function Name="dbo.TwangR_data_acceptfriendrequest" Method="TwangR_data_acceptfriendrequest" IsComposable="true">
-    <Parameter Name="sender" Type="System.Int32" DbType="Int" />
-    <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
-    <Return Type="object" />
-  </Function>
-  <Function Name="dbo.TwangR_data_logfriendrequest" Method="TwangR_data_logfriendrequest" IsComposable="true">
-    <Parameter Name="sender" Type="System.Int32" DbType="Int" />
-    <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.TwangR_data_getallpostsbyuser" Method="TwangR_data_getallpostsbyuser">
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
     <ElementType IdRef="ID2" />
@@ -87,5 +73,32 @@
   <Function Name="dbo.Twangr_user_getusersbyname" Method="Twangr_user_getusersbyname">
     <Parameter Name="QueryText" Parameter="queryText" Type="System.String" DbType="VarChar(50)" />
     <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.Twangr_user_getuserbyid" Method="Twangr_user_getuserbyid">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.TwangR_data_logfriendrequest" Method="TwangR_data_logfriendrequest">
+    <Parameter Name="sender" Type="System.Int32" DbType="Int" />
+    <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TwangR_data_acceptfriendrequest" Method="TwangR_data_acceptfriendrequest">
+    <Parameter Name="sender" Type="System.Int32" DbType="Int" />
+    <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.TwangR_user_GetFriendList" Method="TwangR_user_GetFriendList">
+    <Parameter Name="userId" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.TwangR_user_getpendingfriendrequests" Method="TwangR_user_getpendingfriendrequests">
+    <Parameter Name="userid" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.TwangR_data_declinefriendrequest" Method="TwangR_data_declinefriendrequest">
+    <Parameter Name="sender" Type="System.Int32" DbType="Int" />
+    <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

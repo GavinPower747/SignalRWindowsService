@@ -93,5 +93,35 @@ namespace TwangRLibrary.Data
         {
             return LoginDbToUserData(_dataContext.Twangr_user_getusersbyname(QueryText).ToList());
         }
+
+        public UserData GetUserById(int UserId)
+        {
+            return LoginDbToUserData(_dataContext.Twangr_user_getuserbyid(UserId).ToList()).FirstOrDefault();
+        }
+
+        public List<UserData> GetFriendsList(int UserId)
+        {
+            return LoginDbToUserData(_dataContext.TwangR_user_GetFriendList(UserId).ToList());
+        }
+
+        public List<UserData> GetFriendRequests(int UserId)
+        {
+            return LoginDbToUserData(_dataContext.TwangR_user_getpendingfriendrequests(UserId).ToList());
+        }
+
+        public void LogFriendRequest(int Sender, int Reciever)
+        {
+            _dataContext.TwangR_data_logfriendrequest(Sender, Reciever);
+        }
+
+        public void AcceptFriendRequest(int Sender, int Reciever)
+        {
+            _dataContext.TwangR_data_acceptfriendrequest(Sender, Reciever);
+        }
+
+        public void DeclineFriendRequest(int Sender, int Reciever)
+        {
+            _dataContext.TwangR_data_declinefriendrequest(Sender, Reciever);
+        }
     }
 }
