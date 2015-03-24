@@ -8,20 +8,20 @@
         <beforeApplicationStartup />
       </update>
     </subscription>
-    <deploymentProvider codebase="http://gavindesktop-pc/SignalRWindowsService/SignalRWindowsService.application" />
+    <deploymentProvider codebase="http://gavin-pc/SignalRWindowsService/SignalRWindowsService.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="SignalRWindowsService.exe.manifest" size="13188">
+    <dependentAssembly dependencyType="install" codebase="SignalRWindowsService.exe.manifest" size="11102">
       <assemblyIdentity name="SignalRWindowsService.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TgkLkecxk3MTtRHJcm5ebxl1pgFz0fUrZOYVxXhMbDc=</dsig:DigestValue>
+        <dsig:DigestValue>W4mjd/ET5XSy1nf1d4FVoOloPH3TQECGfvPQX6BFiEw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

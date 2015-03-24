@@ -58,6 +58,8 @@ namespace SignalRWindowsService
     {
         public static ConcurrentDictionary<int, string> ConnectionStringList = new ConcurrentDictionary<int, string>();
         public static ConcurrentDictionary<string, UserData> UserDataList = new ConcurrentDictionary<string, UserData>();
+        public static ConcurrentDictionary<string, List<int>> Chats = new ConcurrentDictionary<string, List<int>>();
+        public static int ChatID = 0;
         /*--------------------------------------------------------------------------------------------------------------------*/
         public void GetBills()
         {
@@ -89,18 +91,50 @@ namespace SignalRWindowsService
             string ConnectionId;
             UserDataList.TryRemove(Context.ConnectionId, out user);
             ConnectionStringList.TryRemove(user.UserId, out ConnectionId);
-            //Code for refreshing friends user lists goes here
+            Clients.All.refreshFriendsList();
         }
 
-        public void Send(string MessageID, string messageUp, string sender, bool isSelf)
+        public Message Send(string MessageID, string messageUp, string sender, bool isSelf, string ChatId)
         {
             Message message = new Message();
             message.messageID = MessageID;
             message.sender = sender;
             message.message = messageUp;
             message.isSelf = isSelf;
-            Clients.All.addMessage(MessageID, messageUp, sender, isSelf);
-            Clients.Caller.messageRecieved(MessageID, messageUp, sender, isSelf);
+            List<string> recipients = new List<string>();
+
+            Parallel.ForEach(Chats, chat => { 
+                if(chat.Key.Equals(ChatID))
+                {
+                    foreach(int user in chat.Value)
+                    {
+                        recipients.Add(ConnectionIdByUserId(user));
+                    }
+                }
+            });
+
+            Clients.Clients(recipients).addMessage(message, ChatId);
+            return message;
+        }
+
+        public string AddChat(int chatter, int chatee)
+        {
+            ChatID++;
+            Chats.TryAdd("Chat" + ChatID, new List<int>() { chatter, chatee } );
+            return "Chat" + ChatID;
+        }
+
+        public List<string> GetChats(int UserId)
+        {
+            List<string> chats = new List<string>();
+
+            Parallel.ForEach(Chats, chat =>
+            {
+                if (chat.Value.Contains(UserId))
+                    chats.Add(chat.Key);
+            });
+
+            return chats;
         }
 
         public void Login(string Username, string Password)

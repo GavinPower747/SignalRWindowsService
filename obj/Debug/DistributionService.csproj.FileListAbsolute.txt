@@ -60,3 +60,4 @@ C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.exe.manifest
 C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.application
 C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.exe
 C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.pdb
+C:\dev\SignalRWindowsService\bin\Debug\Newtonsoft.Json.xml

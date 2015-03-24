@@ -4,12 +4,6 @@ C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.dll
 C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.pdb
 C:\dev\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.dll
 C:\dev\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.pdb
-C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\Newtonsoft.Json.dll
-C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\System.Net.Http.Formatting.dll
-C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\System.Web.Http.dll
-C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\System.Net.Http.Formatting.xml
-C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\System.Web.Http.xml
-C:\dev\SignalRWindowsService\TwangRLibrary\bin\Debug\System.Web.Http.Tracing.xml
 C:\TFSSource\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.dll.config
 C:\TFSSource\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.dll
 C:\TFSSource\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.pdb
