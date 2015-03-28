@@ -58,7 +58,7 @@ namespace SignalRWindowsService
     {
         public static ConcurrentDictionary<int, string> ConnectionStringList = new ConcurrentDictionary<int, string>();
         public static ConcurrentDictionary<string, UserData> UserDataList = new ConcurrentDictionary<string, UserData>();
-        public static ConcurrentDictionary<string, List<int>> Chats = new ConcurrentDictionary<string, List<int>>();
+        public static ConcurrentDictionary<string, List<int>> ActiveChats = new ConcurrentDictionary<string, List<int>>();
         public static int ChatID = 0;
         /*--------------------------------------------------------------------------------------------------------------------*/
         public void GetBills()
@@ -103,7 +103,7 @@ namespace SignalRWindowsService
             message.isSelf = isSelf;
             List<string> recipients = new List<string>();
 
-            Parallel.ForEach(Chats, chat => { 
+            Parallel.ForEach(ActiveChats, chat => { 
                 if(chat.Key.Equals(ChatID))
                 {
                     foreach(int user in chat.Value)
@@ -120,18 +120,24 @@ namespace SignalRWindowsService
         public string AddChat(int chatter, int chatee)
         {
             ChatID++;
-            Chats.TryAdd("Chat" + ChatID, new List<int>() { chatter, chatee } );
+            ActiveChats.TryAdd("Chat" + ChatID, new List<int>() { chatter, chatee } );
+            Clients.Client(ConnectionIdByUserId(chatee)).addChat("Chat" + ChatID, new List<int>() { chatter, chatee});
             return "Chat" + ChatID;
         }
 
-        public List<string> GetChats(int UserId)
+        public Chats GetChats(int UserId)
         {
-            List<string> chats = new List<string>();
+            Chats chats = new Chats();
 
-            Parallel.ForEach(Chats, chat =>
+            Parallel.ForEach(ActiveChats, chat =>
             {
                 if (chat.Value.Contains(UserId))
-                    chats.Add(chat.Key);
+                {
+                    Chat add = new Chat();
+                    add.ChatId = chat.Key;
+                    add.Participants = chat.Value;
+                    chats.Add(add);
+                }
             });
 
             return chats;

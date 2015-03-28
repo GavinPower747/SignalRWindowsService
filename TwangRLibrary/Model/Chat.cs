@@ -9,6 +9,6 @@ namespace TwangRLibrary.Model
     public class Chat
     {
         public string ChatId { get; set; }
-        public List<UserData> Participants { get; set; }
+        public List<int> Participants { get; set; }
     }
 }
