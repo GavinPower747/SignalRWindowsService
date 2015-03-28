@@ -4,7 +4,6 @@ using Microsoft.Owin.Hosting;
 using Owin;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin;
-using SignalRWindowsService.Model;
 using System.Collections.Concurrent;
 using System;
 using TwangRLibrary.Model;
@@ -58,13 +57,6 @@ namespace SignalRWindowsService
     {
         public static ConcurrentDictionary<int, string> ConnectionStringList = new ConcurrentDictionary<int, string>();
         public static ConcurrentDictionary<string, UserData> UserDataList = new ConcurrentDictionary<string, UserData>();
-        /*--------------------------------------------------------------------------------------------------------------------*/
-        public void GetBills()
-        {
-            Bills Bills = new Bills();
-            Bills.GetAllBills();
-            Clients.Caller.displayBills(Bills);
-        }
 
         /*--------------------------------------------------TwangR Functions--------------------------------------------------*/
 

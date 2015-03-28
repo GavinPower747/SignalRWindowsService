@@ -127,15 +127,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\Distribution.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Distribution.dbml</DependentUpon>
-    </Compile>
-    <Compile Include="Data\DistributionRepo.cs" />
-    <Compile Include="Data\IDistributionRepo.cs" />
-    <Compile Include="Model\Bill.cs" />
-    <Compile Include="Model\Bills.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -157,11 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Data\Distribution.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Distribution.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
     <None Include="DistributionService_TemporaryKey.pfx" />
@@ -189,9 +175,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\Distribution.dbml.layout">
-      <DependentUpon>Distribution.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="ProjectInstaller.resx">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </EmbeddedResource>
