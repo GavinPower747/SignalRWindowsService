@@ -54,6 +54,7 @@ namespace SignalRWindowsService
             app.MapSignalR(new HubConfiguration { EnableJSONP = true });
         }
     }
+
     public class DistributionHub : Hub
     {
         public static ConcurrentDictionary<int, string> ConnectionStringList = new ConcurrentDictionary<int, string>();
@@ -101,6 +102,7 @@ namespace SignalRWindowsService
             message.sender = sender;
             message.message = messageUp;
             message.isSelf = isSelf;
+            message.ChatId = ChatId;
             List<string> recipients = new List<string>();
 
             Parallel.ForEach(ActiveChats, chat => { 
@@ -119,10 +121,25 @@ namespace SignalRWindowsService
 
         public string AddChat(int chatter, int chatee)
         {
-            ChatID++;
-            ActiveChats.TryAdd("Chat" + ChatID, new List<int>() { chatter, chatee } );
-            Clients.Client(ConnectionIdByUserId(chatee)).addChat("Chat" + ChatID, new List<int>() { chatter, chatee});
-            return "Chat" + ChatID;
+            try
+            {
+                ChatID++;
+                ActiveChats.TryAdd("Chat" + ChatID, new List<int>() { chatter, chatee });
+                try
+                {
+                    Clients.Client(ConnectionIdByUserId(chatee)).addChat("Chat" + ChatID, new List<int>() { chatter, chatee });
+                }
+                catch(ArgumentException AE)
+                {
+                    // Do Something.... Offline notifications.... that would be nice
+                }
+
+                return "Chat" + ChatID;
+            }
+            catch(Exception ex)
+            {
+                return ex.ToString();
+            }
         }
 
         public Chats GetChats(int UserId)

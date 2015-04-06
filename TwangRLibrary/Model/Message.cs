@@ -9,11 +9,12 @@ namespace TwangRLibrary.Model
 {
     public class Message
     {
-        public String messageID {get; set; }
-        public String sender { get; set; }
-        public String message { get; set; }
+        public string messageID {get; set;}
+        public string sender { get; set; }
+        public string message { get; set; }
         public bool isSelf { get; set; }
         public DateTime TimeStamp { get; set; }
+        public string ChatId { get; set; }
 
         private readonly ITwangRRepo repo;
 

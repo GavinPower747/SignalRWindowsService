@@ -22,6 +22,10 @@ C:\dev\SignalRWindowsService\bin\Debug\Newtonsoft.Json.dll
 C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.dll
 C:\dev\SignalRWindowsService\bin\Debug\TwangRLibrary.pdb
 C:\dev\SignalRWindowsService\bin\Debug\Newtonsoft.Json.xml
+C:\TFSSource\SignalRWindowsService\obj\Debug\DistributionService.csprojResolveAssemblyReference.cache
+C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.ProjectInstaller.resources
+C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.DistributionService.resources
+C:\TFSSource\SignalRWindowsService\obj\Debug\DistributionService.csproj.GenerateResource.Cache
 C:\TFSSource\SignalRWindowsService\bin\Debug\SignalRWindowsService.exe.config
 C:\TFSSource\SignalRWindowsService\bin\Debug\SignalRWindowsService.exe.manifest
 C:\TFSSource\SignalRWindowsService\bin\Debug\SignalRWindowsService.application
@@ -47,10 +51,6 @@ C:\TFSSource\SignalRWindowsService\bin\Debug\Microsoft.Owin.Host.HttpListener.xm
 C:\TFSSource\SignalRWindowsService\bin\Debug\Microsoft.Owin.Hosting.xml
 C:\TFSSource\SignalRWindowsService\bin\Debug\Microsoft.Owin.Security.xml
 C:\TFSSource\SignalRWindowsService\bin\Debug\Newtonsoft.Json.xml
-C:\TFSSource\SignalRWindowsService\obj\Debug\DistributionService.csprojResolveAssemblyReference.cache
-C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.ProjectInstaller.resources
-C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.DistributionService.resources
-C:\TFSSource\SignalRWindowsService\obj\Debug\DistributionService.csproj.GenerateResource.Cache
 C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.exe.manifest
 C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.application
 C:\TFSSource\SignalRWindowsService\obj\Debug\SignalRWindowsService.exe
