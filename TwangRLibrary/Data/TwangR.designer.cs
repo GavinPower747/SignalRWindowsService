@@ -191,6 +191,13 @@ namespace TwangRLibrary.Data
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), sender, requestee);
 			return ((int)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.TwangR_chat_logmessages")]
+		public int TwangR_chat_logmessages([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string messageid, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string messageSender, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string messageContent, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string messageChat)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), messageid, messageSender, messageContent, messageChat);
+			return ((int)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TwangR_data_chatlogs")]

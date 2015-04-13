@@ -12,7 +12,10 @@ namespace TwangRLibrary.Data
     {
         private TwangRDataContext _dataContext = new TwangRDataContext();
 
-        public void LogMessage(Message message) { }
+        public void LogMessage(Message message) 
+        { 
+            _dataContext.TwangR_chat_logmessages(message.messageID, message.sender,message.message, message.ChatId);
+        }
 
         public UserData Login(string username, string password)
         {

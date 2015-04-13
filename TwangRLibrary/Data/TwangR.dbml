@@ -101,4 +101,11 @@
     <Parameter Name="requestee" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.TwangR_chat_logmessages" Method="TwangR_chat_logmessages">
+    <Parameter Name="messageid" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="messageSender" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="messageContent" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="messageChat" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
 </Database>

@@ -18,6 +18,7 @@ namespace TwangRLibrary.Model
         public Chats(ITwangRRepo repo)
         {
             this.repo = repo;
+            _Chats = new List<Chat>();
         }
 
         public void Add(Chat item)

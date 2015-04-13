@@ -9,3 +9,4 @@ C:\TFSSource\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.dll
 C:\TFSSource\SignalRWindowsService\TwangRLibrary\bin\Debug\TwangRLibrary.pdb
 C:\TFSSource\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.dll
 C:\TFSSource\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.pdb
+C:\TFSSource\SignalRWindowsService\TwangRLibrary\obj\Debug\TwangRLibrary.csprojResolveAssemblyReference.cache

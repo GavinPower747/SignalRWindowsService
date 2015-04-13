@@ -82,7 +82,7 @@ namespace SignalRWindowsService
 
         public void JoinRealTime(UserData user)
         {
-            ConnectionStringList.TryAdd(user.UserId, Context.ConnectionId);
+            ConnectionStringList.AddOrUpdate(user.UserId, Context.ConnectionId, (key, oldvalue) => Context.ConnectionId);
             UserDataList.TryAdd(Context.ConnectionId, user);
         }
 
@@ -95,28 +95,47 @@ namespace SignalRWindowsService
             Clients.All.refreshFriendsList();
         }
 
-        public Message Send(string MessageID, string messageUp, string sender, bool isSelf, string ChatId)
+        public Message Send(string MessageID, string messageUp, string sender, string TimeStamp, bool isSelf, string ChatId)
         {
             Message message = new Message();
             message.messageID = MessageID;
             message.sender = sender;
             message.message = messageUp;
+            message.TimeStamp = TimeStamp;
             message.isSelf = isSelf;
             message.ChatId = ChatId;
-            List<string> recipients = new List<string>();
+            List<int> recipients = new List<int>();
+            List<string> ConnectionIds = new List<string>();
+            ActiveChats.TryGetValue(ChatId, out recipients);
 
-            Parallel.ForEach(ActiveChats, chat => { 
-                if(chat.Key.Equals(ChatID))
-                {
-                    foreach(int user in chat.Value)
-                    {
-                        recipients.Add(ConnectionIdByUserId(user));
-                    }
-                }
-            });
+            message.LogMessage(message);
 
-            Clients.Clients(recipients).addMessage(message, ChatId);
+            foreach (int user in recipients)
+            {
+                //if(isOnline(user))
+                    ConnectionIds.Add(ConnectionIdByUserId(user));
+            }
+
+            foreach(string ConnectionId in ConnectionIds)
+            {
+                Clients.All.addMessage(message, ChatId);
+                Clients.Client(ConnectionId).ConnectionSuccessful();
+            }
+            
             return message;
+        }
+
+        public bool isOnline(int UserId)
+        {
+            foreach (int user in ConnectionStringList.Keys)
+            {
+                if(user == UserId)
+                {
+                    return true;
+                }
+            }
+
+            return false; ;
         }
 
         public string AddChat(int chatter, int chatee)
@@ -144,20 +163,35 @@ namespace SignalRWindowsService
 
         public Chats GetChats(int UserId)
         {
+
             Chats chats = new Chats();
 
-            Parallel.ForEach(ActiveChats, chat =>
+            try
             {
-                if (chat.Value.Contains(UserId))
+                Parallel.ForEach(ActiveChats, chat =>
                 {
-                    Chat add = new Chat();
-                    add.ChatId = chat.Key;
-                    add.Participants = chat.Value;
-                    chats.Add(add);
-                }
-            });
+                    foreach (int User in chat.Value)
+                    {
+                        if (User == UserId)
+                        {
+                            Chat add = new Chat();
+                            add.ChatId = chat.Key;
+                            add.Participants = chat.Value;
+                            chats.Add(add);
+                        }
+                    }
+                });
 
-            return chats;
+                return chats;
+            }
+            catch (Exception ex)
+            {
+                Chat error = new Chat();
+                error.ChatId = ex.ToString();
+                chats.Add(error);
+                return chats;
+            }
+
         }
 
         public void Login(string Username, string Password)
@@ -167,8 +201,8 @@ namespace SignalRWindowsService
 
             if (user is UserData)
             {
-                Clients.Caller.loginSuccess(user.UserId, user.UserName, user.UserRealName, user.UserEmail, user.UserNickName);
                 JoinRealTime(user);
+                Clients.Caller.loginSuccess(user.UserId, user.UserName, user.UserRealName, user.UserEmail, user.UserNickName);
             }
             else
             {

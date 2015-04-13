@@ -13,7 +13,7 @@ namespace TwangRLibrary.Model
         public string sender { get; set; }
         public string message { get; set; }
         public bool isSelf { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
         public string ChatId { get; set; }
 
         private readonly ITwangRRepo repo;

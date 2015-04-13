@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="30704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="SignalRWindowsService.exe" size="31216">
       <assemblyIdentity name="SignalRWindowsService" version="0.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Rffe05iwC2J8S1704MmKdIKu96Z7749rBIaoINvstiU=</dsig:DigestValue>
+        <dsig:DigestValue>UZ7kj9SMhQiBX6JLbZB1xzdKA/6nLs6GfDGe8Psoy3c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -181,7 +181,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>L/y3MeyFnJD8+anKt2Dg3wXLR0nyAzCYNAORszQHOa8=</dsig:DigestValue>
+        <dsig:DigestValue>oSYqg7PkNHoi0FoqFJz/iMY86XzUDbeojX66xMnvi8E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
